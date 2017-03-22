@@ -16,13 +16,19 @@ To make it work you need to be able to set up an HTTPS folder on your web server
 
 You will then use the request helper as such:
 
-```To Be Completed```
+```
+To Be Completed
+```
 
 # Installation:
-```npm install --save internet-explorer-http-2-https```
+```
+npm install --save internet-explorer-http-2-https
+```
 
 # Tests:
-```npm test```
+```
+npm test
+```
 
 # To Dos:
 - [ ] Complete Testing
