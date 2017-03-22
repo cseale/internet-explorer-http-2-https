@@ -1,0 +1,29 @@
+{
+  "name": "internet-explorer-http-2-https",
+  "version": "1.0.0",
+  "description": "Helps older versions of IE make XDR requests from HTTP protocol pages to HTTPS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cseale/internet-explorer-http-2-https.git"
+  },
+  "keywords": [
+    "internet",
+    "explorer",
+    "ie8",
+    "ie9",
+    "ie10",
+    "http",
+    "https",
+    "ajax"
+  ],
+  "author": "Colm Seale",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cseale/internet-explorer-http-2-https/issues"
+  },
+  "homepage": "https://github.com/cseale/internet-explorer-http-2-https#readme"
+}
