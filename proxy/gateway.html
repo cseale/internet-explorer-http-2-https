@@ -1,0 +1,11 @@
+$(window).bind("message",function(e){
+	var xdr = new XDomainRequest();
+	xdr.open("get", e.originalEvent.data);
+	xdr.onprogress = function () { };
+	xdr.ontimeout = function () { };
+	xdr.onerror = function () { };
+	xdr.onload = function() {
+		parent.postMessage(xdr.responseText,"*");
+	}
+	setTimeout(function () {xdr.send();}, 0);
+});

@@ -1,17 +1,29 @@
-var RequestHelper = {
-	GatewayURL: "https://www.yourdomain.on.ca/secure/gateway.html",
-	Busy: false,
-	sendRequest: function(url,success,$){
+import $ from 'jquery';
+
+class InternetExplorerHttp2Https {
+  constructor(gateway) {
+    this.busy = false;
+    this.gateway = gateway;
+  }
+
+  sendRequest(url,success) {
 		var protocol = location.protocol;
 		if(window.XDomainRequest){
 			if(protocol == "http:"){
 				if(RequestHelper.Busy){
 					setTimeout(function(){
-						RequestHelper.sendRequest(url,success,$);
+						RequestHelper.sendRequest(url,success);
 					},50);
 				} else {
 					RequestHelper.Busy = true;
-					$("body").append("<iframe id="ajaxProxy" style="display: none;" src="&quot;+RequestHelper.GatewayURL+&quot;" height="240" width="320"></iframe>");
+					$("body").append(`
+            <iframe 
+              id="ajaxProxy" 
+              style="display: none;" 
+              src="&quot;+RequestHelper.GatewayURL+&quot;" 
+              height="240" 
+              width="320">
+            </iframe>`);
 					$("#ajaxProxy").load(function(){
 						ajaxProxy.postMessage(url,"*");
 						$(window).bind("message",function(e){
@@ -46,3 +58,5 @@ var RequestHelper = {
 		}
 	}
 }
+
+export default InternetExplorerHttp2Https;
