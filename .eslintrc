@@ -1,0 +1,31 @@
+{
+    "plugins": [
+        "import",
+        "jest"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "xo/browser"
+    ],
+    "rules": {
+        "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+        "camelcase": [1, { "properties": "never" }],
+        "func-names": [0],
+        "indent": [2, 2],
+        "max-nested-callbacks": [0],
+        "max-params": [0],
+        "max-statements-per-line": [2, {"max": 2}],
+        "no-alert": [0],
+        "no-implicit-coercion": [2, { "boolean": false , "string": false}],
+        "no-unused-expressions": [2, {"allowShortCircuit": true, "allowTernary": true}],
+        "no-warning-comments": [0],
+        "object-curly-spacing": [0, "always"],
+        "radix": [0],
+        "spaced-comment": ["error", "always", { "block": { "exceptions": ["@ngInject"], "balanced": true } }]
+    },
+    "env": {
+        "browser": true,
+        "jasmine": true,
+        "node": true
+    }
+}

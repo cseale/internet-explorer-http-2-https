@@ -1,9 +1,28 @@
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-  entry: './index.js',
+  entry: {
+    proxy: './src/proxy/proxy',
+    client: './src/client/client'
+  },
   output: {
-    filename: './dist/bundle.js',
+    path: path.join(__dirname, 'dist'),
+    filename: 'XDomainObjectProxy.[name].js',
+    library: ['XDomainObjectProxy', '[name]'],
     libraryTarget: 'umd'
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'client'
+    }), // Generates default index.html
+    new HtmlWebpackPlugin({  // Also generate a test.html
+      filename: 'proxy.html',
+      template: './src/proxy/proxy.ejs',
+      title: 'proxy',
+      chunks: ['proxy'],
+      inject: 'head'
+    })],
   module: {
     rules: [
       {
@@ -17,5 +36,8 @@ module.exports = {
         }
       }
     ]
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist')
   }
-}
+};
