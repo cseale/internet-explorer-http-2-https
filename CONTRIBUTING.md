@@ -19,3 +19,4 @@ npm test
 
 # To Dos:
 - [ ] Complete Unit Testing
+- [ ] Describe `options` object
