@@ -20,7 +20,7 @@ You will need to be able to set up an HTTPS folder on your web server and serve 
     <title>proxy</title>
   <script type="text/javascript" src="http://mydomain.com/scripts/XDomainObjectProxy.proxy.js"></script></head>
   <body>
-    <script>XDomainObject.proxy.start();</script>
+    <script>XDomainObjectProxy.proxy.start();</script>
   </body>
 </html>
 ```
