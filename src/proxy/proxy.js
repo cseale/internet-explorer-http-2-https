@@ -10,6 +10,7 @@ export function start() {
     window.addEventListener('message', function (evt) {
       // making sure the message is an Altocloud's XHR request, and not any other message sent
       // on the window by other JS, including browser extensions.
+
       if (isRequest(evt.data)) {
         proxyXHR(evt.source, evt.origin, evt.data);
       }
@@ -30,6 +31,7 @@ function proxyXHR(source, origin, options) {
     xhr.onload = function () {
       // XDomainRequest won't return `status`, retuning 200 as default
       source.postMessage({
+        requestId: options.requestId,
         body: tryParseAsJson(xhr.responseText),
         status: xhr.status || 200
       }, origin);
@@ -38,6 +40,7 @@ function proxyXHR(source, origin, options) {
     xhr.onerror = function () {
       // XDomainRequest doesn't give any details on the error, not much can be done here
       source.postMessage({
+        requestId: options.requestId,
         error: new ServerError(GENERIC_SERVER_ERROR_MESSAGE, 500)
       }, origin);
     };
@@ -47,6 +50,7 @@ function proxyXHR(source, origin, options) {
       if (xhr.readyState !== 4) { return; }
 
       let message = {
+        requestId: options.requestId,
         status: xhr.status
       };
       let res = {};
@@ -77,11 +81,13 @@ function proxyXHR(source, origin, options) {
 
   xhr.open(options.method, options.url);
 
-  Object.keys(options.headers).forEach(function (headerName) {
-    if (options.headers.hasOwnProperty(headerName)) {
-      xhr.setRequestHeader(headerName, options.headers[headerName]);
-    }
-  });
+  if (options.headers) {
+    Object.keys(options.headers).forEach(function (headerName) {
+      if (options.headers.hasOwnProperty(headerName)) {
+        xhr.setRequestHeader(headerName, options.headers[headerName]);
+      }
+    });
+  }
 
   xhr.send(options.body);
 

@@ -3,7 +3,7 @@ X-Domain-Object-Proxy
 Package for web applications which wish to support IE 8-9 and need Cross Domain Request Support, specifically from HTTP pages to HTTPS.
 
 # Motivation:
-The original limitations are talked about in this blog post: <http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx>. This library intends to provide a workaround to point 7. 
+The original limitations are talked about in this blog post: <http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx>. This library intends to provide a workaround to point 7. Please be aware of the limitations and requirements on the server side around headers and response types as mentioned in the blog post.
 
 The code is this package is based off of these articles & examples:
 - <http://mcgivery.com/ie8-and-cors/>
@@ -34,6 +34,9 @@ We have a template `src/proxy/proxy.ejs` which you can incorpate into your webpa
 
 # Client:
 You will then use the request helper as such:
-```
-To Be Completed
+```javascript
+import {create} from 'XDomainRequestProxy.client';
+
+let client = create();
+client.sendRequest(options);
 ```

@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-    <title>client</title>
-  <script type="text/javascript" src="XDomainObjectProxy.client.js"></script></head>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
   <body>
     <script>
     var client = XDomainObjectProxy.client.create('https://localhost:8081/proxy.html');

@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -158,7 +158,8 @@ exports.default = UnauthorizedError;
 
 /***/ }),
 /* 4 */,
-/* 5 */
+/* 5 */,
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -190,11 +191,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var GENERIC_SERVER_ERROR_MESSAGE = 'Woops, there was an error making the request.';
 
 function start() {
-  alert('start me!!!!');
   if (window.addEventListener) {
     window.addEventListener('message', function (evt) {
       // making sure the message is an Altocloud's XHR request, and not any other message sent
       // on the window by other JS, including browser extensions.
+
       if (isRequest(evt.data)) {
         proxyXHR(evt.source, evt.origin, evt.data);
       }
@@ -215,6 +216,7 @@ function proxyXHR(source, origin, options) {
     xhr.onload = function () {
       // XDomainRequest won't return `status`, retuning 200 as default
       source.postMessage({
+        requestId: options.requestId,
         body: tryParseAsJson(xhr.responseText),
         status: xhr.status || 200
       }, origin);
@@ -223,6 +225,7 @@ function proxyXHR(source, origin, options) {
     xhr.onerror = function () {
       // XDomainRequest doesn't give any details on the error, not much can be done here
       source.postMessage({
+        requestId: options.requestId,
         error: new _serverError2.default(GENERIC_SERVER_ERROR_MESSAGE, 500)
       }, origin);
     };
@@ -234,6 +237,7 @@ function proxyXHR(source, origin, options) {
       }
 
       var message = {
+        requestId: options.requestId,
         status: xhr.status
       };
       var res = {};
@@ -264,11 +268,13 @@ function proxyXHR(source, origin, options) {
 
   xhr.open(options.method, options.url);
 
-  Object.keys(options.headers).forEach(function (headerName) {
-    if (options.headers.hasOwnProperty(headerName)) {
-      xhr.setRequestHeader(headerName, options.headers[headerName]);
-    }
-  });
+  if (options.headers) {
+    Object.keys(options.headers).forEach(function (headerName) {
+      if (options.headers.hasOwnProperty(headerName)) {
+        xhr.setRequestHeader(headerName, options.headers[headerName]);
+      }
+    });
+  }
 
   xhr.send(options.body);
 

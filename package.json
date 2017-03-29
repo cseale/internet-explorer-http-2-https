@@ -1,12 +1,14 @@
 {
   "name": "x-domain-object-proxy",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Helps older versions of IE make XDomainObject requests from HTTP protocol pages to HTTPS",
   "main": "dist/bundle.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "test": "./node_modules/.bin/jest",
-    "start": "./node_modules/.bin/webpack-dev-server"
+    "start": "./node_modules/.bin/webpack-dev-server",
+    "start:http": "./node_modules/.bin/webpack-dev-server",
+    "start:https": "./node_modules/.bin/webpack-dev-server --https"
   },
   "files": [
     "dist",
@@ -26,7 +28,13 @@
     "https",
     "ajax"
   ],
-  "author": "Colm Seale",
+  "contributors": [{ 
+    "name" : "Colm Seale", 
+    "email" : "colm.seale@gmail.com"
+    }, { 
+    "name" : "Ismael Rivera", 
+    "email" : "irivera@altocloud.com"
+    }],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cseale/internet-explorer-http-2-https/issues"
@@ -50,6 +58,7 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
-    "html-webpack-plugin": "^2.28.0"
+    "html-webpack-plugin": "^2.28.0",
+    "promise-polyfill": "^6.0.2"
   }
 }

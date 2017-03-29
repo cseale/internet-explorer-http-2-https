@@ -13,8 +13,12 @@ module.exports = {
     libraryTarget: 'umd'
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'client'
+    new HtmlWebpackPlugin({  // Also generate a test.html
+      filename: 'index.html',
+      template: './src/client/client.ejs',
+      title: 'client',
+      chunks: ['client'],
+      inject: 'head'
     }), // Generates default index.html
     new HtmlWebpackPlugin({  // Also generate a test.html
       filename: 'proxy.html',
