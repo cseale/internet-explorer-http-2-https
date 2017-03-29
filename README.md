@@ -3,12 +3,7 @@ X-Domain-Object-Proxy
 Package for web applications which wish to support IE 8-9 and need Cross Domain Request Support, specifically from HTTP pages to HTTPS.
 
 # Motivation:
-The original limitations are talked about in this blog post: <http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx>. This library intends to provide a workaround to point 7. Please be aware of the limitations and requirements on the server side around headers and response types as mentioned in the blog post.
-
-The code is this package is based off of these articles & examples:
-- <http://mcgivery.com/ie8-and-cors/>
-- <https://github.com/andrewmcgivery/RequestHelper>
-- <http://www.webdbg.com/test/xdm/httptohttps.asp>
+The limitations of XDR functionality in IE 8 and 9 are described in this blog post: <http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx>. This library intends to provide the workaround for point 7. Please be aware of the other limitations and requirements on the server side around headers and response types as mentioned in the blog post, if you intend to support IE 8 and 9.
 
 # Installation:
 ```
@@ -35,8 +30,27 @@ We have a template `src/proxy/proxy.ejs` which you can incorpate into your webpa
 # Client:
 You will then use the request helper as such:
 ```javascript
-import {create} from 'XDomainRequestProxy.client';
+// Either ES6 Import 
+import {create} from 'XDomainObjectProxy.client'
+var client = create();
 
-let client = create();
-client.sendRequest(options);
+// Or as a global object from using <script> tags
+var client = XDomainObjectProxy.client.create('https://localhost:8081/proxy.html');
+
+/**
+ * some other code ...
+ */
+
+var options = {
+  location: 'https://api.nasa.gov/planetary',
+  path: '/apod',
+  qs: {
+    'api_key': 'DEMO_KEY'
+  }
+}
+client.sendRequest(options).then(function (data) {
+  console.log('data returned', data);
+}, function (err) {
+  console.log('error', err);
+});
 ```
