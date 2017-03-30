@@ -1,0 +1,27 @@
+{
+  "name": "x-domain-object-proxy",
+  "description": "Helps older versions of IE make XDomainObject requests from HTTP protocol pages to HTTPS",
+  "main": "dist/XDomainObjectProxy.client.js",
+  "authors": [
+    "Colm Seale"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "internet",
+    "explorer",
+    "ie8",
+    "ie9",
+    "ie10",
+    "http",
+    "https",
+    "ajax"
+  ],
+  "homepage": "https://github.com/cseale/x-domain-object-proxy",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

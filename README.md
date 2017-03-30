@@ -6,8 +6,12 @@ Package for web applications which wish to support IE 8-9 and need Cross Domain 
 The limitations of XDR functionality in IE 8 and 9 are described in this blog post: <http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx>. This library intends to provide the workaround for point 7. Please be aware of the other limitations and requirements on the server side around headers and response types as mentioned in the blog post, if you intend to support IE 8 and 9.
 
 # Installation:
-```
+```bash
+# npm
 npm install --save x-domain-object-proxy
+
+# bower
+bower install --save x-domain-object-proxy
 ```
 
 # Proxy:
