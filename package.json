@@ -2,7 +2,7 @@
   "name": "x-domain-object-proxy",
   "version": "0.0.1",
   "description": "Helps older versions of IE make XDomainObject requests from HTTP protocol pages to HTTPS",
-  "main": "dist/bundle.js",
+  "main": "dist/XDomainObjectProxy.client.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "test": "./node_modules/.bin/jest",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cseale/internet-explorer-http-2-https.git"
+    "url": "git+https://github.com/cseale/x-domain-object-proxy.git"
   },
   "keywords": [
     "internet",
@@ -37,9 +37,9 @@
     }],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cseale/internet-explorer-http-2-https/issues"
+    "url": "https://github.com/cseale/x-domain-object-proxy/issues"
   },
-  "homepage": "https://github.com/cseale/internet-explorer-http-2-https#readme",
+  "homepage": "https://github.com/cseale/x-domain-object-proxy#readme",
   "devDependencies": {
     "babel-core": "^6.24.0",
     "babel-jest": "^19.0.0",
