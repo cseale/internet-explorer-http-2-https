@@ -1,6 +1,6 @@
 {
   "name": "x-domain-object-proxy",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Helps older versions of IE make XDomainObject requests from HTTP protocol pages to HTTPS",
   "main": "dist/XDomainObjectProxy.client.js",
   "scripts": {
