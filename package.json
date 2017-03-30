@@ -1,6 +1,6 @@
 {
   "name": "x-domain-object-proxy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Helps older versions of IE make XDomainObject requests from HTTP protocol pages to HTTPS",
   "main": "dist/XDomainObjectProxy.client.js",
   "scripts": {
@@ -28,13 +28,16 @@
     "https",
     "ajax"
   ],
-  "contributors": [{ 
-    "name" : "Colm Seale", 
-    "email" : "colm.seale@gmail.com"
-    }, { 
-    "name" : "Ismael Rivera", 
-    "email" : "irivera@altocloud.com"
-    }],
+  "contributors": [
+    {
+      "name": "Colm Seale",
+      "email": "colm.seale@gmail.com"
+    },
+    {
+      "name": "Ismael Rivera",
+      "email": "irivera@altocloud.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cseale/x-domain-object-proxy/issues"
